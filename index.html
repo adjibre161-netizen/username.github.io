@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Alll🎀</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  margin:0;
+  min-height:100vh;
+
+  background: linear-gradient(45deg,#ff4fa3,#ff9ecf,#ffc2e2,#ffe0f0,#ff69b4);
+  background-size:400% 400%;
+  animation: gradientMove 6s ease infinite;
+
+  text-align:center;
+  overflow-x:hidden;
+}
+
+.hidden{display:none}
+section{padding:60px 20px}
+h1,h2{font-family:'Pacifico',cursive;color:#ff4fa3}
+
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:25px;
+  background:white;
+  color:#ff4fa3;
+  font-weight:bold;
+  cursor:pointer;
+  margin:5px;
+  transition: all 0.2s ease;
+}
+button:hover{transform:scale(1.1)}
+
+input{
+  padding:10px;
+  border-radius:20px;
+  border:none;
+  margin:10px;
+}
+
+/* LOGIN */
+#login{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+/* COUNTDOWN */
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:20px;
+}
+.time-box{
+  background:white;
+  padding:15px;
+  border-radius:15px;
+  min-width:70px;
+}
+.time-box span{
+  font-size:1.5em;
+  font-weight:bold;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  bottom:15px;
+  width:100%;
+}
+
+/* HEART */
+.heart{
+  position:fixed;
+  bottom:0;
+  animation:float 3s linear forwards;
+  pointer-events:none;
+}
+@keyframes float{
+  to{transform:translateY(-100vh);opacity:0;}
+}
+
+/* ===== GALERI PINTEREST ===== */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+  padding:30px 20px 80px;
+  max-width:500px;
+  margin:auto;
+}
+
+.frame{
+  background:white;
+  padding:12px 12px 30px 12px;
+  border-radius:18px;
+  position:relative;
+  transform:rotate(-1deg);
+  transition:0.3s;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+.frame:nth-child(even){transform:rotate(1deg)}
+.frame:hover{transform:scale(1.03) rotate(0deg)}
+
+.frame img{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  display:block;
+  border-radius:18px;
+}
+
+.frame p{
+  margin-top:10px;
+  font-size:13px;
+  font-weight:500;
+}
+
+/* Tape */
+.frame::before{
+  content:"🩹";
+  position:absolute;
+  top:-12px;
+  left:50%;
+  transform:translateX(-50%) rotate(-5deg);
+  width:60px;
+  height:25px;
+  background:rgba(255,255,255,0.7);
+  border-radius:5px;
+}
+
+/* Sticker beda tiap foto */
+.ultah::after{content:"🎂";position:absolute;bottom:-10px;right:-10px;font-size:22px;}
+.bunga::after{content:"🌸";position:absolute;bottom:-10px;right:-10px;font-size:22px;}
+.love::after{content:"💗";position:absolute;bottom:-10px;right:-10px;font-size:22px;}
+.pastel::after{content:"🎀";position:absolute;bottom:-10px;right:-10px;font-size:22px;}
+.sparkle::after{content:"✨";position:absolute;bottom:-10px;right:-10px;font-size:22px;}
+.cute::after{content:"🧸";position:absolute;bottom:-10px;right:-10px;font-size:22px;}
+
+/* Modal */
+#modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+#modal.active{
+  display:flex;
+}
+
+#modal img{
+  max-width:90%;
+  max-height:80%;
+  border-radius:20px;
+}
+
+/* Glitter falling */
+@keyframes fall{
+  to{transform:translateY(100vh);opacity:0;}
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  pointer-events:none;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size:40px 40px;
+  opacity:0.4;
+}
+
+.confetti{
+  position:fixed;
+  width:8px;
+  height:8px;
+  background:white;
+  top:-10px;
+  animation: fall 5s linear infinite;
+  opacity:0.8;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(100vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+.stars{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  pointer-events:none;
+  z-index:0;
+
+  background-image:
+    radial-gradient(white 2px, transparent 2px),
+    radial-gradient(white 1px, transparent 1px);
+
+  background-size: 80px 80px, 40px 40px;
+  background-position: 0 0, 20px 20px;
+
+  animation: starsMove 60s linear infinite;
+  opacity:0.6;
+}
+
+@keyframes starsMove{
+  from{transform:translateY(0);}
+  to{transform:translateY(-1000px);}
+}
+
+.cake{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:250px;
+  z-index:2000;
+  animation: cakePop 1s ease;
+}
+
+@keyframes cakePop{
+  0%{transform:translate(-50%,-50%) scale(0);}
+  60%{transform:translate(-50%,-50%) scale(1.3);}
+  100%{transform:translate(-50%,-50%) scale(1);}
+}
+
+#fireworks{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:1000;
+}
+
+.balloons{
+  position:fixed;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:500;
+}
+
+.balloon{
+  position:absolute;
+  width:30px;
+  height:40px;
+  background:#ff69b4;
+  border-radius:50%;
+  animation: floatBalloon 10s linear infinite;
+}
+
+@keyframes floatBalloon{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-120vh);}
+}
+
+.cake{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:300px;
+  z-index:3000;
+  animation:cakePop 1s ease;
+}
+
+@keyframes cakePop{
+  0%{transform:translate(-50%,-50%) scale(0);}
+  60%{transform:translate(-50%,-50%) scale(1.3);}
+  100%{transform:translate(-50%,-50%) scale(1);}
+}
+
+.frame{
+  background:white;
+  padding:40px 12px 30px 12px; /* tambah ruang atas untuk tali */
+  border-radius:18px;
+  position:relative;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* ===== CLIP VARIAN ===== */
+
+.frame{
+  position:relative;
+  transition:0.3s ease;
+}
+
+/* Efek bergoyang saat disentuh / diklik */
+.frame:active{
+  transform:scale(1.03) rotate(2deg);
+}
+
+/* Animasi goyang halus */
+@keyframes swing{
+  0%{transform:rotate(-2deg);}
+  50%{transform:rotate(2deg);}
+  100%{transform:rotate(-2deg);}
+}
+
+.frame:hover{
+  animation:swing 0.6s ease-in-out;
+}
+
+/* ===== CLIP STYLE ===== */
+
+/* 1 Jepitan */
+.clip-clip::before{
+  content:"🖇️";
+  position:absolute;
+  top:-18px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:22px;
+}
+
+/* 2 Tali */
+.clip-rope::before{
+  content:"🪢";
+  position:absolute;
+  top:-25px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:22px;
+}
+
+/* 3 Pita */
+.clip-ribbon::before{
+  content:"🎀";
+  position:absolute;
+  top:-20px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:22px;
+}
+
+/* 4 Pin */
+.clip-pin::before{
+  content:"📌";
+  position:absolute;
+  top:-18px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:20px;
+}
+
+.clip-bigclip::before{
+  content:"📍";
+  position:absolute;
+  top:-22px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:26px;
+  filter:drop-shadow(0 3px 3px rgba(0,0,0,0.2));
+}
+
+/* 6 Sticker Tape */
+.clip-tape::before{
+  content:"🩹";
+  position:absolute;
+  top:-20px;
+  left:50%;
+  transform:translateX(-50%) rotate(-5deg);
+  font-size:26px;
+  width:60px;
+  height:25px;
+  background:rgba(255,255,255,0.8);
+  border-radius:6px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* ===== BASE FRAME ===== */
+.frame{
+  position:relative;
+  padding:18px 18px 45px 18px;
+  border-radius:18px;
+  background:#ffffff;
+  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+  transition:0.3s ease;
+}
+
+.frame:hover{
+  transform:scale(1.04);
+}
+
+/* ===== 1. BIRTHDAY STYLE ===== */
+.frame-birthday{
+  background:linear-gradient(135deg,#ffe6f2,#ffffff);
+  border:3px dashed #ff4fa3;
+  box-shadow:0 8px 20px rgba(255,105,180,0.25);
+}
+
+/* ===== 2. FLOWER STYLE ===== */
+.frame-flower{
+  background:linear-gradient(135deg,#fff,#ffe0f0);
+  border:3px solid #ffb6d9;
+}
+
+/* ===== 3. LOVE STYLE ===== */
+.frame-love{
+  background:linear-gradient(135deg,#ffffff,#ffd6ec);
+  border:3px double #ff4fa3;
+}
+
+/* ===== 4. PASTEL STYLE ===== */
+.frame-pastel{
+  background:#fff7fb;
+  border:3px solid #f8c8e8;
+  border-radius:25px;
+}
+
+/* ===== 5. SPARKLE STYLE ===== */
+.frame-sparkle{
+  background:#ffffff;
+  border:3px solid #ffd1e8;
+  box-shadow:
+    0 0 15px rgba(255,105,180,0.2),
+    inset 0 0 0 2px #ffe6f2;
+}
+
+/* ===== 6. CUTE STYLE ===== */
+.frame-cute{
+  background:linear-gradient(135deg,#fff,#ffeaf5);
+  border:3px dotted #ff69b4;
+  border-radius:20px;
+}
+
+/* Animasi alasan */
+.reason-animate{
+  animation: fadeSlide 0.5s ease;
+}
+
+@keyframes fadeSlide{
+  from{
+    opacity:0;
+    transform:translateY(15px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.bucket-container{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+}
+
+.bucket-img{
+  width:90%;
+  max-width:400px;
+  border-radius:20px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.2);
+  transition:0.3s;
+}
+
+.bucket-img:hover{
+  transform:scale(1.05) rotate(-1deg);
+}
+
+.caption{
+  margin-top:15px;
+  font-size:14px;
+  opacity:0.8;
+}
+
+.bucket-img{
+  animation: floaty 3s ease-in-out infinite;
+}
+
+@keyframes floaty{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<div class="balloons"></div>
+
+<canvas id="fireworks"></canvas>
+
+<div id="cakePopup" class="cake hidden">🎂</div>
+
+<audio id="bgMusic" loop>
+  <source src="ultah.mp3" type="audio/mp3">
+</audio>
+
+<div id="login">
+  <h1>Passwordnya dulu</h1>
+  <input type="password" id="password">
+  <button onclick="checkPassword()">Masuk</button>
+</div>
+
+<div id="main" class="hidden">
+
+<section id="home">
+<h1>Happy Birthday ke-16 Aliyahh🥳🎂🎉</h1>
+<p>👇Menuju 17 Tahun🫵</p>
+
+<div class="countdown">
+<div class="time-box"><span id="days">0</span><p>Hari</p></div>
+<div class="time-box"><span id="hours">0</span><p>Jam</p></div>
+<div class="time-box"><span id="minutes">0</span><p>Menit</p></div>
+<div class="time-box"><span id="seconds">0</span><p>Detik</p></div>
+</div>
+</section>
+
+<section id="suratSection" class="hidden">
+<h2>Surat Untuk Kamu 💌</h2>
+<button onclick="startLetter()">Buka Surat</button>
+<p id="letterText" style="margin-top:20px;min-height:120px;"></p>
+</section>
+
+<section id="alasanSection" class="hidden">
+<h2>8 Alasan Kenapa Aku Suka Kamu?</h2>
+<button onclick="generateReason()">Klik</button>
+<p id="reasonText" style="margin-top:20px;"></p>
+</section>
+
+<section id="bucketSection" class="hidden">
+  <h2>Untuk Kamu 🎀</h2>
+
+  <div class="bucket-container">
+    <img src="foto-bucket.jpg" class="bucket-img" onclick="openModal(this)">
+  </div>
+
+  <p class="caption">💌 sedikit untuk kamu</p>
+</section>
+
+<section id="galeriSection" class="hidden">
+<h2>Galeri Rifatul aliyah 🎀</h2>
+<div class="gallery">
+<div class="frame frame-birthday clip-clip"><img src="foto1.jpg" onclick="openModal(this)"><p>Birthday Girl</p></div>
+<div class="frame frame-flower clip-rope"><img src="foto2.jpg" onclick="openModal(this)"><p>Flower Mood</p></div>
+<div class="frame frame-love clip-ribbon"><img src="foto3.jpg" onclick="openModal(this)"><p>Sweet Smile</p></div>
+<div class="frame frame-pastel clip-pin"><img src="foto4.jpg" onclick="openModal(this)"><p>Soft Girl</p></div>
+<div class="frame frame-sparkle clip-bigclip"><img src="foto5.jpg" onclick="openModal(this)"><p>Sparkle Vibes</p></div>
+<div class="frame frame-cute clip-tape"><img src="foto6.jpg" onclick="openModal(this)"><p>Cute Mode</p></div>
+</div>
+</section>
+
+<div id="modal" class="hidden" onclick="closeModal()">
+<img id="modalImg">
+</div>
+
+<nav>
+<button onclick="showSection('home')">Home</button>
+<button onclick="showSection('suratSection')">Surat</button>
+<button onclick="showSection('alasanSection')">Kenapa?</button>
+<button onclick="showSection('bucketSection')">Untuk Kamu 💐</button>
+<button onclick="showSection('galeriSection')">Galeri</button>
+</nav>
+
+</div>
+
+<script>
+
+let wleeCount = 0;
+let specialShown = false;
+
+/* PASSWORD */
+function checkPassword(){
+if(document.getElementById("password").value==="aliyah16"){
+document.getElementById("login").style.display="none";
+document.getElementById("main").classList.remove("hidden");
+showCake();
+document.getElementById("bgMusic").play().catch(()=>{});
+showCake();
+startCountdown();
+}else{alert("Salah huuu");}
+}
+
+/* NAV */
+function showSection(id){
+document.querySelectorAll("#main section").forEach(sec=>sec.classList.add("hidden"));
+document.getElementById(id).classList.remove("hidden");
+}
+
+/* COUNTDOWN */
+const targetDate = new Date(2027, 4, 14, 0, 0, 0).getTime(); 
+// bulan 4 = Mei (karena Januari = 0)
+
+function updateCountdown(){
+  const now = new Date().getTime();
+  const diff = targetDate - now;
+
+  if(diff <= 0){
+    document.getElementById("days").innerText = "0";
+    document.getElementById("hours").innerText = "0";
+    document.getElementById("minutes").innerText = "0";
+    document.getElementById("seconds").innerText = "0";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((diff % (1000*60)) / 1000);
+
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+  document.getElementById("seconds").innerText = seconds;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* TYPEWRITER */
+const letterMessage=`hai ipa,
+sebentar lagi kamu ulang tahun yg ke-16,yh lebih tepate sok tanggal 14 mei.
+aku cuma mau bilang, semoga di umur kamu yang baru ini, kamu bisa dapet banyak hal baik yang kamu harapin. semoga kamu selalu sehat, bahagia, dan dikelilingi orang-orang yang tulus sama kamu.
+makasi ya, untuk segalanya walaupun ga bisa lagi,aku senang saat kamu bahagia
+
+sekali lagi, selamat ulang tahun buat nanti.
+have a nice day.
+
+—from someone`;
+
+let letterInterval = null;
+
+function startLetter(){
+
+  const el = document.getElementById("letterText");
+
+  // Hentikan interval lama kalau ada
+  if(letterInterval){
+    clearInterval(letterInterval);
+  }
+
+  el.innerHTML = "";
+  let index = 0;
+
+  letterInterval = setInterval(()=>{
+    if(index < letterMessage.length){
+      el.innerHTML += 
+        letterMessage[index] === "\n" ? "<br>" : letterMessage[index];
+      index++;
+    } else {
+      clearInterval(letterInterval);
+    }
+  },40);
+}
+
+/* GENERATOR */
+const reasons=[
+"1.Karena sifat² mu",
+"2.Karena kamu cantik",
+"3.Karena kamu baik,lucu",
+"4.Karena kamu ya kamu",
+"5.Karena kamu itu rifatul aliyah",
+"6.Karena perilaku kamu",
+"7.Karena tutur kata mu",
+"8.Segalanya tentang kamu"
+];
+
+let reasonIndex = 0;
+
+function generateReason(){
+
+  const text = document.getElementById("reasonText");
+
+  // Reset animasi
+  text.classList.remove("reason-animate");
+
+  // Paksa browser refresh animasi
+  void text.offsetWidth;
+
+  // Isi teks sesuai urutan
+  text.innerHTML = reasons[reasonIndex];
+
+  // Tambahkan animasi
+  text.classList.add("reason-animate");
+
+  // Naik ke berikutnya
+  reasonIndex++;
+
+  if(reasonIndex >= reasons.length){
+    reasonIndex = 0;
+  }
+}
+
+/* CONFESS */
+function showChoices(){
+document.getElementById("choices").classList.remove("hidden");
+}
+function acceptLove(){
+document.getElementById("result").innerHTML="TENANN EE??? YEYYY 💖";
+for(let i=0;i<15;i++){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💗";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),3000);
+}
+}
+function moveButton(){
+  const btn = document.getElementById("runBtn");
+
+  // Ukuran layar dan tombol
+  const btnWidth = btn.offsetWidth;
+  const btnHeight = btn.offsetHeight;
+  const padding = 90; // jarak dari tepi layar
+
+  const maxX = window.innerWidth - btnWidth - padding;
+  const maxY = window.innerHeight - btnHeight - padding;
+
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
+
+  btn.style.position = "fixed";
+  btn.style.left = randomX + "px";
+  btn.style.top = randomY + "px";
+}
+
+const urutTexts = [
+  "wlee😝",
+  "oh gitu🙂‍↔️",
+  "ckptw😊",
+  "ok fine😔",
+  "mlete🖕",
+  "maksa bet😒",
+  "huuuu😲",
+  "dihh😑",
+  "gaiso wlee😜",
+  "woyy la😭"
+];
+
+function showWlee(){
+
+  // tambah hitungan
+  wleeCount++;
+
+  // kalau sudah 10 klik
+  if(wleeCount % 10 === 0){
+    showSpecialMessage();
+}
+
+  // ambil teks sesuai urutan
+  const index = (wleeCount - 1) % urutTexts.length;
+  const padding = 90;
+  const text = document.createElement("div");
+  text.innerText = wleeCount + ". " + urutTexts[index];
+
+  text.style.position = "fixed";
+  text.style.left = Math.random() * 70 + "vw";
+  text.style.top = Math.random() * 70 + "vh";
+  text.style.fontSize = "24px";
+  text.style.fontWeight = "bold";
+  text.style.color = "#ff4fa3";
+  text.style.zIndex = "1000";
+  text.style.pointerEvents = "none";
+  text.style.animation = "popWlee 1s ease-out forwards";
+
+  document.body.appendChild(text);
+
+  setTimeout(() => text.remove(), 1000);
+}
+
+function showSpecialMessage(){
+  const special = document.createElement("div");
+
+  special.innerText = "NGEYELLL BETT😭🫵";
+  special.style.position = "fixed";
+  special.style.top = "50%";
+  special.style.left = "50%";
+  special.style.transform = "translate(-50%, -50%)";
+  special.style.fontSize = "28px";
+  special.style.fontWeight = "bold";
+  special.style.color = "#ff1493";
+  special.style.background = "white";
+  special.style.padding = "20px 30px";
+  special.style.borderRadius = "20px";
+  special.style.boxShadow = "0 10px 30px rgba(0,0,0,0.2)";
+  special.style.zIndex = "2000";
+  special.style.animation = "popWlee 0.6s ease";
+
+  document.body.appendChild(special);
+
+  setTimeout(() => {
+    special.remove();
+  }, 2500);
+}
+
+/* MODAL */
+function openModal(img){
+  const modal = document.getElementById("modal");
+  modal.classList.add("active");
+  document.getElementById("modalImg").src = img.src;
+}
+
+function closeModal(){
+  document.getElementById("modal").classList.remove("active");
+}
+
+/* GLITTER FALL */
+setInterval(()=>{
+const sparkle=document.createElement("div");
+sparkle.innerHTML="🎊";
+sparkle.style.position="fixed";
+sparkle.style.left=Math.random()*100+"vw";
+sparkle.style.top="-10px";
+sparkle.style.fontSize="25px";
+sparkle.style.animation="fall 4s linear forwards";
+sparkle.style.pointerEvents="none";
+document.body.appendChild(sparkle);
+setTimeout(()=>sparkle.remove(),4000);
+},1500);
+
+function closeModal(){
+  document.getElementById("modal").classList.remove("active");
+}
+
+const music = document.getElementById("bgMusic");
+music.volume = 0.4;
+
+document.body.addEventListener("click", function() {
+  music.play().catch(()=>{});
+}, { once: true });
+
+function toggleMusic(){
+  if(music.paused){
+    music.play();
+    document.getElementById("musicBtn").innerText="🔊 ON";
+  }else{
+    music.pause();
+    document.getElementById("musicBtn").innerText="🔇 OFF";
+  }
+}
+
+setInterval(()=>{
+  const confetti = document.createElement("div");
+  confetti.className = "confetti";
+
+  confetti.style.left = Math.random()*100+"vw";
+  confetti.style.background = 
+    ["#fff","#ff69b4","#ffd1e8","#ff4fa3"][Math.floor(Math.random()*4)];
+
+  confetti.style.animationDuration = (Math.random()*3+3)+"s";
+
+  document.body.appendChild(confetti);
+
+  setTimeout(()=>confetti.remove(),6000);
+},300);
+
+function show(){
+  const cake = document.getElementById("cakePopup");
+  cake.classList.remove("hidden");
+
+  setTimeout(()=>{
+    cake.classList.add("hidden");
+  },3000);
+}
+
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+function createFirework(){
+  const x = Math.random() * canvas.width;
+  const y = Math.random() * canvas.height / 2;
+
+  for(let i=0;i<30;i++){
+    particles.push({
+      x:x,
+      y:y,
+      size:Math.random()*3+2,
+      speedX:(Math.random()-0.5)*6,
+      speedY:(Math.random()-0.5)*6,
+      color:["#ff4fa3","#ffffff","#ffd1e8"][Math.floor(Math.random()*3)],
+      life:100
+    });
+  }
+}
+
+function animateFireworks(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  particles.forEach((p,index)=>{
+    p.x += p.speedX;
+    p.y += p.speedY;
+    p.life--;
+
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+    ctx.fill();
+
+    if(p.life<=0){
+      particles.splice(index,1);
+    }
+  });
+
+  requestAnimationFrame(animateFireworks);
+}
+
+setInterval(createFirework, 3000);
+animateFireworks();
+
+function createBalloons(){
+  const container = document.querySelector(".balloons");
+
+  for(let i=0;i<5;i++){ // cuma 5 balon biar tidak ramai
+    const balloon = document.createElement("div");
+    balloon.className = "balloon";
+    balloon.style.left = Math.random()*100 + "vw";
+    balloon.style.background = ["#ff4fa3","#ffc2e2","#ffffff"][Math.floor(Math.random()*3)];
+    balloon.style.animationDuration = (Math.random()*5+8) + "s";
+
+    container.appendChild(balloon);
+  }
+}
+
+createBalloons();
+
+function showCake(){
+  const cake = document.getElementById("cakePopup");
+  cake.classList.remove("hidden");
+
+  setTimeout(()=>{
+    cake.classList.add("hidden");
+  },3000);
+}
+
+</script>
+
+<div style="position:fixed;top:15px;right:15px;">
+  <button onclick="toggleMusic()" id="musicBtn">🔊 ON</button>
+</div>
+
+</body>
+</html>
